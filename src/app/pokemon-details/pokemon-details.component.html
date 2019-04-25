@@ -1,0 +1,28 @@
+<div class="container-fluid" *ngIf="pokemon">
+  <div class="row m-5">
+    <div class="col-12 col-md-4">
+      <img [src]="pokemon.imageUrl" alt="No Image" class="img-fluid"/>
+    </div>
+    <div class="col-12 col-md-8">
+      <ul>
+        <li *ngIf="pokemon.name"><span class="font-weight-bold">Name: </span>{{pokemon.name}}</li>
+        <li *ngIf="pokemon.hp"><span class="font-weight-bold">Hp: </span>{{pokemon.hp}}</li>
+        <li *ngIf="pokemon.rarity"><span class="font-weight-bold">Rarity: </span>{{pokemon.rarity}}</li>
+        <li *ngIf="pokemon.artist"><span class="font-weight-bold">Artist: </span>{{pokemon.artist}}</li>
+        <li *ngIf="pokemon.attacks"><span class="font-weight-bold">Attacks: </span></li>
+        <ul *ngIf="pokemon.attacks">
+          <li *ngFor="let attack of pokemon.attacks"><span class="font-weight-bold"></span>{{attack.name}} , damage : {{attack.damage}}</li>
+        </ul>
+        <li *ngIf="pokemon.resistances"><span class="font-weight-bold">Resistances: </span></li>
+        <ul *ngIf="pokemon.resistances">
+          <li *ngFor="let resistance of pokemon.resistances"><span class="font-weight-bold"></span>{{resistance.type}}</li>
+        </ul>
+        <li *ngIf="pokemon.weaknesses"><span class="font-weight-bold">Weaknesses: </span></li>
+        <ul *ngIf="pokemon.weaknesses">
+          <li *ngFor="let weakness of pokemon.weaknesses"><span class="font-weight-bold"></span>{{weakness.type}} </li>
+        </ul>
+      </ul>
+    </div>
+  </div>
+  <button class="btn btn-primary" (click)="backToMainPage()"><i class="fa fa-arrow-left"></i> Back</button>
+</div>

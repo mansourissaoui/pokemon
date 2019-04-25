@@ -1,0 +1,6 @@
+<div class="card-body" (click)="selectPokemon()">
+  <img src={{pokemon.imageUrl}} alt={{pokemon.name}} class="card-img-top" width="120" height="180" >
+  <h6 *ngIf="pokemon.hp" ><span class="text-info">HP: </span>{{pokemon.hp}}</h6>
+  <h6 *ngIf="pokemon.rarity" ><span class="text-info">Rarity: </span>{{pokemon.rarity}}</h6>
+  <h6 *ngIf="pokemon.artist" ><span class="text-info">Artist: </span>{{pokemon.artist}}</h6>
+</div>

@@ -1,0 +1,42 @@
+<div class="container-fluid" *ngIf = "allPokemon &&  allPokemon.length >0">
+  <div style="text-align:center">
+    <img src="assets/img/logo.png" alt="logo"/>
+  </div>
+  <div class="row my-1">
+    <div class="input-group col-5 col-md-3">
+      <input type="text" class="form-control" placeholder="Search" [(ngModel)]="page.searchingInput">
+    </div>
+    <div class="input-group col-5 col-md-3">
+      <select class="custom-select" [(ngModel)]="page.selectedCategory">
+        <option value="name">name</option>
+        <option value="rarity">rarity</option>
+        <option value="artist">artist</option>
+      </select>
+    </div>
+  </div>
+  <div class="row">
+    <div
+      *ngFor="let pokemon of allPokemon| search : page.selectedCategory : page.searchingInput
+      | slice: (page.currentPage-1) * page.currentPageSize : (page.currentPage) * page.currentPageSize"
+      class="col-6 col-md-3 col-lg-2">
+      <app-pokemon-item [pokemon]="pokemon" (pokemonClicked)="goToDetails($event)"></app-pokemon-item>
+    </div>
+  </div>
+
+  <div class="row mx-2 my-5">
+    <div class="input-group col-3 col-md-2 col-xl-1">
+      <select class="custom-select" [(ngModel)]="page.currentPageSize">
+        <option value="10">10</option>
+        <option value="50">50</option>
+        <option value="100">100</option>
+      </select>
+    </div>
+
+    <ngb-pagination
+      [(page)]="page.currentPage"
+      [pageSize]="page.currentPageSize"
+      [collectionSize]="page.collectionSize"
+      [rotate]="true"
+      [boundaryLinks]="true"></ngb-pagination>
+  </div>
+</div>
