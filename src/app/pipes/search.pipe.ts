@@ -21,7 +21,7 @@ export class SearchPipe implements PipeTransform {
       return items;
     }
 
-    const searchedPokemon = items.filter(singleItem =>
+    const searchedPokemon = items.filter(singleItem => singleItem[field] ).filter(singleItem =>
       singleItem[field].toLowerCase().includes(value.toLowerCase())
     );
 
